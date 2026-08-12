@@ -1,7 +1,15 @@
 ---
 name: basanos
-description: >-  
-BASANOS (検証) — industry-grade playbook for offensive Web3 security assessment and responsible  disclosure, covering EVM smart contracts / DeFi and Rust/Solana consensus &  validator code. Usable by individual researchers, audit teams, and security firms.  Invoke when a target is named (project, handle, repo, or website) and the goal is  to assess it for vulnerabilities and turn findings into responsible, paid  disclosures. Runs a defined lifecycle: authorize -> scope -> recon -> analyze ->  prove -> rate -> report -> disclose -> verify-fix. Verification is fork / eth_call /  local-fork PoC ONLY; live systems are never exploited. Maintained by @oxzenon.
+description: >-
+  BASANOS — industry-grade playbook for offensive Web3 security assessment and
+  responsible disclosure, covering EVM smart contracts / DeFi and Rust/Solana
+  consensus & validator code. Usable by individual researchers, audit teams,
+  and security firms. Invoke when a target is named (project, handle, repo, or
+  website) and the goal is to assess it for vulnerabilities and turn findings
+  into responsible, paid disclosures. Runs a defined lifecycle: authorize ->
+  scope -> recon -> analyze -> prove -> rate -> report -> disclose -> verify-fix.
+  Verification is fork / eth_call / local-fork PoC ONLY; live systems are never
+  exploited. Maintained by @oxzenon.
 ---
 
  BASANOS (検証) — Web3 Security Assessment Playbook
