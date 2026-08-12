@@ -1,16 +1,37 @@
+<div align="center">
+
 BASANOS
 
 Web3 Security Assessment Playbook
 
+Find the weakness. Prove the impact. Kill the false positive. Disclose responsibly.
+
+<br>
+
+
+
+
+
+
+<br>
+
 BASANOS is an adapted and expanded Web3 security assessment methodology for authorized security research and responsible disclosure.
 
-It is designed for independent security researchers, bug bounty hunters, audit teams, and security-focused developers working across EVM smart contracts, DeFi, Rust, and Solana consensus and validator systems.
-
-Find the weakness. Prove the impact. Kill the false positive. Disclose responsibly.
+</div>
 
 What BASANOS Is
 
-BASANOS is a structured security assessment playbook built around a repeatable research lifecycle:
+BASANOS is a structured security assessment playbook for independent security researchers, bug bounty hunters, audit teams, and security-focused developers working across:
+
+EVM smart contracts
+
+DeFi protocols
+
+Rust / Solana programs
+
+Solana consensus and validator systems
+
+The methodology is designed to move beyond simply searching for known vulnerability patterns.
 
 AUTHORIZE
     ↓
@@ -42,35 +63,62 @@ REPORT
     ↓
 VERIFY FIX
 
-The methodology does not treat known vulnerability classes as the complete search space.
+A hypothesis is not a finding until its reachability, violated security property, attacker capability, and impact have been demonstrated in an authorized test environment.
+
+Core Philosophy
+
+BASANOS does not treat known vulnerability classes as the complete search space.
 
 Known patterns are used as heuristics alongside:
 
-protocol and architecture modeling
+Research Lens
 
-invariant analysis
+Purpose
 
-attacker-capability modeling
+🧩 Protocol & architecture modeling
 
-state-machine analysis
+Understand how the system actually works
 
-sequence analysis
+🔒 Invariant analysis
 
-cross-contract composition
+Identify properties that must always hold
 
-economic reasoning
+🎯 Attacker modeling
 
-fuzzing and dynamic testing
+Define realistic attacker capabilities
 
-adversarial verification
+🔄 State-machine analysis
 
-reproducible proof
+Find bugs that emerge across sequences
 
-The objective is not to manufacture findings. The objective is to produce correct, reproducible, defensible security conclusions.
+🧬 Composition analysis
 
-Core Principles
+Examine interactions between components
 
-Authorized scope only
+💰 Economic reasoning
+
+Determine whether a weakness creates real value
+
+🧪 Fuzzing & dynamic testing
+
+Stress assumptions and boundaries
+
+🛡️ Adversarial verification
+
+Attempt to kill false positives
+
+📐 Reproducible proof
+
+Establish evidence another researcher can validate
+
+The objective is not to manufacture findings.
+
+The objective is to produce correct, reproducible, and defensible security conclusions.
+
+Operating Principles
+
+<details>
+<summary><strong>01 — Authorized scope only</strong></summary>
 
 BASANOS is intended for authorized security work.
 
@@ -86,7 +134,10 @@ your own deployment
 
 Publicly deployed code is not automatically permission to attack a live system.
 
-Never exploit live systems
+</details>
+
+<details>
+<summary><strong>02 — Never exploit live systems</strong></summary>
 
 Testing and proof should remain inside:
 
@@ -102,17 +153,20 @@ read-only queries
 
 No real user funds should be moved and no live exploit transaction should be broadcast.
 
-Prove before reporting
+</details>
+
+<details>
+<summary><strong>03 — Prove before reporting</strong></summary>
 
 A suspicion is not automatically a finding.
 
-The methodology requires the researcher to establish:
+The methodology requires establishing:
 
 reachability
 
 attacker capability
 
-the affected security property
+affected security property
 
 actual impact
 
@@ -122,29 +176,29 @@ reproducible evidence
 
 Candidates that do not survive adversarial review should be rejected.
 
-State the bound
+</details>
+
+<details>
+<summary><strong>04 — State the bound</strong></summary>
 
 Severity must reflect the actual demonstrated impact and the assumptions required to reach it.
 
-BASANOS distinguishes between:
+BASANOS distinguishes:
 
-theoretical TVL
+Theoretical TVL
       ↓
-reachable value
+Reachable Value
       ↓
-exposed value
+Exposed Value
       ↓
-extractable value
+Extractable Value
       ↓
-demonstrated impact
+Demonstrated Impact
 
-Separate trust risk from permissionless exploitation
+</details>
 
-A privileged administrator having powerful capabilities is not automatically equivalent to an unprivileged exploit.
-
-Centralization and trusted-role issues should be reported according to the target's scope and severity rules.
-
-Kill your own findings
+<details>
+<summary><strong>05 — Kill your own findings</strong></summary>
 
 Before submission, challenge every candidate:
 
@@ -162,71 +216,81 @@ Can the claimed impact actually be reproduced?
 
 What is the strongest argument against the finding?
 
-If the finding does not survive the counter-test, reject it.
+If the candidate does not survive the counter-test, reject it.
+
+</details>
 
 EVM / DeFi Track
 
 BASANOS provides a broad methodology for analyzing EVM smart contracts and DeFi systems.
 
-Coverage includes:
+Coverage
 
-reconnaissance and contract mapping
+Reconnaissance and contract mapping
 
-proxy and implementation discovery
+Proxy and implementation discovery
 
-deployment-vs-source verification
+Deployment-vs-source verification
 
-asset-flow and authority mapping
+Asset-flow and authority mapping
 
-authorization and privilege analysis
+Authorization and privilege analysis
 
-accounting and solvency invariants
+Accounting and solvency invariants
 
 ERC-20 behavior assumptions
 
 ERC-4626 and vault accounting
 
-oracle and pricing assumptions
+Oracle and pricing assumptions
 
-lending and liquidation logic
+Lending and liquidation logic
 
 AMM / DEX integrations
 
-external calls and callbacks
+External calls and callbacks
 
-signatures and replay
+Signatures and replay
 
-governance and upgradeability
+Governance and upgradeability
 
-cross-contract composition
+Cross-contract composition
 
-differential analysis
+Differential analysis
 
-known vulnerability-pattern analysis
+Known vulnerability-pattern analysis
 
-fuzzing and invariant testing
+Fuzzing and invariant testing
 
-fork-based proof of concept
+Fork-based proof of concept
 
-economic impact modeling
+Economic impact modeling
 
-The EVM track explicitly requires multiple analytical passes:
+Four Independent Analytical Passes
 
-PATTERN PASS
-     ↓
-INVARIANT PASS
-     ↓
-SEQUENCE PASS
-     ↓
-COMPOSITION PASS
+┌───────────────┐
+│  PATTERN PASS │
+└───────┬───────┘
+        ↓
+┌─────────────────┐
+│ INVARIANT PASS  │
+└───────┬─────────┘
+        ↓
+┌─────────────────┐
+│  SEQUENCE PASS  │
+└───────┬─────────┘
+        ↓
+┌───────────────────┐
+│ COMPOSITION PASS  │
+└───────────────────┘
 
-This helps reduce dependence on known exploit patterns and forces deeper reasoning about protocol behavior.
+This reduces dependence on known exploit patterns and forces deeper reasoning about protocol behavior.
 
 Rust / Solana Track
 
-The playbook separates Solana program security from consensus / validator research.
+BASANOS separates Solana program security from consensus / validator research.
 
-Solana program / Rust
+Solana Program / Rust
 
 Focus areas include:
 
@@ -252,7 +316,7 @@ upgrade authority
 
 migration and state-version handling
 
-Solana consensus / validator
+Solana Consensus / Validator
 
 Focus areas include:
 
@@ -300,62 +364,127 @@ explicit about assumptions
 
 quantitative where appropriate
 
-A typical proof model is:
+Typical Proof Model
 
 BEFORE
-    ↓
+  ↓
 AUTHORIZED TEST SEQUENCE
-    ↓
+  ↓
 AFTER
-    ↓
+  ↓
 SECURITY PROPERTY / INVARIANT VIOLATION
-    ↓
+  ↓
 IMPACT
 
 For financially material issues, quantify:
 
-attacker capital
-protocol loss
-victim loss
-attacker proceeds
-fees / slippage
-repeatability
-net economic result
+Attacker Capital
+      ↓
+Protocol Loss
+      ↓
+Victim Loss
+      ↓
+Attacker Proceeds
+      ↓
+Fees / Slippage
+      ↓
+Repeatability
+      ↓
+Net Economic Result
 
 Multi-Agent Research
 
 BASANOS is designed to support multiple analytical agents without relying on identical prompts.
 
-Suggested lenses include:
+Suggested Lenses
+
+Agent
+
+Lens
+
+01
 
 Architecture / control-flow
+
+02
+
 Asset / accounting
+
+03
+
 Invariant / state-machine
+
+04
+
 Authorization / privilege
+
+05
+
 Oracle / economics
+
+06
+
 Composability / integration
+
+07
+
 Historical pattern research
+
+08
+
 Adversarial verification
 
 Every serious finding should pass through an independent verifier whose job is to disprove it.
 
-The goal is to reduce groupthink, duplicated analysis, and AI-generated false positives.
+The goal is to reduce:
+
+groupthink
+
+duplicated analysis
+
+AI-generated false positives
 
 Severity
 
-BASANOS uses impact, attacker capability, preconditions, capital requirements, repeatability, and exposure when reasoning about severity.
+BASANOS considers:
 
-Suggested categories:
+Impact
+×
+Attacker Capability
+×
+Preconditions
+×
+Capital Requirement
+×
+Repeatability
+×
+Exposure
 
-Critical — unauthorized, high-impact compromise with realistic attacker capability and material loss, corruption, or system-wide safety failure.
+Suggested Categories
 
-High — material compromise or repeatable loss with meaningful conditions or bounded exposure.
+Severity
 
-Medium — meaningful but limited or conditional impact.
+Meaning
 
-Low — minor impact, edge conditions, or limited practical consequence.
+🔴 Critical
 
-Informational / Trust — design or trust assumptions without an unauthorized exploit path.
+Unauthorized, high-impact compromise with realistic attacker capability and material loss, corruption, or system-wide safety failure
+
+🟠 High
+
+Material compromise or repeatable loss with meaningful conditions or bounded exposure
+
+🟡 Medium
+
+Meaningful but limited or conditional impact
+
+🔵 Low
+
+Minor impact, edge conditions, or limited practical consequence
+
+⚪ Informational / Trust
+
+Design or trust assumptions without an unauthorized exploit path
 
 The target program's own bounty rules always take precedence.
 
@@ -381,44 +510,54 @@ Responsible Disclosure
 
 BASANOS is designed around good-faith, private disclosure.
 
-The intended process is:
-
 IDENTIFY
-   ↓
+    ↓
 VERIFY
-   ↓
+    ↓
 DOCUMENT
-   ↓
+    ↓
 PRIVATELY DISCLOSE
-   ↓
+    ↓
 SUPPORT REMEDIATION
-   ↓
+    ↓
 VERIFY THE FIX
 
 Never threaten, extort, or condition disclosure on payment.
 
-For bug-bounty programs, follow the exact program scope, duplicate policy, severity criteria, submission channel, and disclosure rules.
+For bug-bounty programs, follow the exact:
+
+program scope
+
+duplicate policy
+
+severity criteria
+
+submission channel
+
+disclosure rules
 
 Repository
-
-The repository is intentionally simple:
 
 basanos/
 ├── SKILL.md
 ├── README.md
 └── LICENSE
 
+File
+
+Purpose
+
 SKILL.md
 
-The complete operational security assessment playbook.
+Complete operational security assessment playbook
 
 README.md
 
-The public overview, methodology summary, and usage guidance.
+Public overview, methodology summary, and usage guidance
 
 LICENSE
 
-The license and attribution terms governing the repository.
+License and attribution terms governing the repository
 
 Using BASANOS
 
@@ -436,19 +575,39 @@ A strong security assessment is not defined by how many Critical findings it pro
 
 It is defined by how convincingly the researcher can answer:
 
-What did we test, what assumptions did we make, what did we prove, what did we reject, what could we not test, and what residual risk remains?
+What did we test?
+What assumptions did we make?
+What did we prove?
+What did we reject?
+What could we not test?
+What residual risk remains?
 
 BASANOS is built around that discipline.
 
 Author
 
+<div align="center">
+
+Oxzenon
+
 BASANOS is maintained by Oxzenon.
+
+</div>
 
 Attribution & License
 
-BASANOS is an adapted and expanded security assessment playbook derived from the original KENSHO methodology by Duke (@dukedotsol / cryptoduke01). This version has been renamed and substantially adapted by Oxzenon.
+BASANOS is an adapted and expanded security assessment playbook derived from the original KENSHO methodology by Duke (@dukedotsol / cryptoduke01).
+
+This version has been renamed and substantially adapted by Oxzenon.
 
 Licensed under CC BY 4.0, with attribution required.
 
 See LICENSE.
 
+<div align="center">
+
+BASANOS
+
+Find the weakness. Prove the impact. Kill the false positive.
+
+</div>
